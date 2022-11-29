@@ -362,7 +362,7 @@ Character Sheet Header
 }
 
 .charsheet .sheet-JTTH .sheet-section-pc .sheet-section-pc-header{
-  background: url("https://raw.githubusercontent.com/Venator-Ignis/Roll20_JTTH_Custom_Sheet/main/sheet-bg-header.png");
+  background: url("https://raw.githubusercontent.com/Venator-Ignis/JTTH_Roll20_Character_Sheet/main/sheet-bg-header.png");
   background-size: 100% 100%;
   display: grid;
   grid-template-areas: "logo . . details"
@@ -462,7 +462,7 @@ Character Sheet Header
 }
 
 .charsheet .sheet-JTTH .sheet-section-pc .sheet-section-pc-header .sheet-section-pc-header-logo div{
-  background: url("https://raw.githubusercontent.com/Venator-Ignis/Roll20_JTTH_Custom_Sheet/main/sheet-logo.png");
+  background: url("https://raw.githubusercontent.com/Venator-Ignis/JTTH_Roll20_Character_Sheet/main/sheet-logo.png");
   width: 330px;
   height: 40px;
   display: block;
@@ -477,7 +477,7 @@ Character Sheet Body Mortal Attribute
 */
 
 .charsheet .sheet-JTTH .sheet-container-attribute{
-  background: url("https://raw.githubusercontent.com/Venator-Ignis/Roll20_JTTH_Custom_Sheet/main/sheet-box-border.png");
+  background: url("https://raw.githubusercontent.com/Venator-Ignis/JTTH_Roll20_Character_Sheet/main/sheet-box-border.png");
   background-size: 100% 100%;
   display: inline-grid;
   grid-template-columns: 1fr;
@@ -536,6 +536,7 @@ Character Sheet Body Mortal Attribute
   background: white;
   position: relative;
   font-weight: bold;
+  border-radius: 10px;
 }
 
 .charsheet .sheet-JTTH .sheet-container-attribute .sheet-container-footer span:hover{
@@ -579,7 +580,7 @@ Character Sheet Body Bar
 }
 
 .charsheet .sheet-JTTH .sheet-container-bar::before{
-  border-image: url("https://raw.githubusercontent.com/Venator-Ignis/Roll20_JTTH_Custom_Sheet/main/sheet-bar-border.png") 103 103 103 103 fill stretch;
+  border-image: url("https://raw.githubusercontent.com/Venator-Ignis/JTTH_Roll20_Character_Sheet/main/sheet-bar-border.png") 103 103 103 103 fill stretch;
   border-style: solid;
   border-width: 30px 30px 0;
   box-sizing: border-box;
@@ -617,7 +618,7 @@ Character Sheet Body Bar
 }
 
 .charsheet .sheet-JTTH .sheet-container-bar .sheet-container-header::after{
-  background: url("https://raw.githubusercontent.com/Venator-Ignis/Roll20_JTTH_Custom_Sheet/main/sheet-bar-spacer.png");
+  background: url("https://raw.githubusercontent.com/Venator-Ignis/JTTH_Roll20_Character_Sheet/main/sheet-bar-spacer.png");
   background-size: 100% 100%;
   content: '';
   display: inline-block;
@@ -671,7 +672,7 @@ Character Sheet Body Box
 }
 
 .charsheet .sheet-JTTH .sheet-container-box::before{
-  border-image: url("https://raw.githubusercontent.com/Venator-Ignis/Roll20_JTTH_Custom_Sheet/main/sheet-box-border.png") 50 50 50 50 fill stretch;
+  border-image: url("https://raw.githubusercontent.com/Venator-Ignis/JTTH_Roll20_Character_Sheet/main/sheet-box-border.png") 50 50 50 50 fill stretch;
   border-style: solid;
   border-width: 15px 15px;
   box-sizing: border-box;
@@ -849,7 +850,7 @@ Character Sheet Body panel
 }
 
 .charsheet .sheet-JTTH .sheet-container-panel::before{
-  border-image: url("https://raw.githubusercontent.com/Venator-Ignis/Roll20_JTTH_Custom_Sheet/main/sheet-box-border.png") 50 50 50 50 fill stretch;
+  border-image: url("https://raw.githubusercontent.com/Venator-Ignis/JTTH_Roll20_Character_Sheet/main/sheet-box-border.png") 50 50 50 50 fill stretch;
   border-style: solid;
   border-width: 15px 15px;
   box-sizing: border-box;
@@ -946,7 +947,7 @@ Character Sheet Body Wells
 }
 
 .charsheet .sheet-JTTH .sheet-container-well::before{
-  border-image: url("https://raw.githubusercontent.com/Venator-Ignis/Roll20_JTTH_Custom_Sheet/main/sheet-well-border.png") 96 314 96 314 fill stretch;
+  border-image: url("https://raw.githubusercontent.com/Venator-Ignis/JTTH_Roll20_Character_Sheet/main/sheet-well-border.png") 96 314 96 314 fill stretch;
   border-style: solid;
   border-width: 32px 101px;
   box-sizing: border-box;
@@ -1581,6 +1582,8 @@ Roll Templates
   padding-top: 5px;
   padding-bottom: 5px;
   background-color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .sheet-rolltemplate-atk .sheet-desc span,
@@ -1632,7 +1635,6 @@ Roll Templates
 }
 
 .sheet-rolltemplate-dmg{
-  margin-top: -7px;
   position: relative;
 }
 
@@ -1874,7 +1876,7 @@ Character Sheet PC Content Save and Skills
 
 .charsheet .sheet-JTTH .sheet-section-pc .sheet-tab-mortal .well-saves .sheet-container-attribute,
 .charsheet .sheet-JTTH .sheet-section-pc .sheet-tab-cultivator .well-saves .sheet-container-attribute{
-  background: url("https://raw.githubusercontent.com/Venator-Ignis/Roll20_JTTH_Custom_Sheet/main/sheet-box-border.png");
+  background: url("https://raw.githubusercontent.com/Venator-Ignis/JTTH_Roll20_Character_Sheet/main/sheet-box-border.png");
   background-size: 100% 100%;
   display: inline-grid;
   grid-template-columns: 1fr;
@@ -3879,13 +3881,6 @@ Character Sheet toggle
 
 .charsheet .sheet-JTTH .sheet-toggle:checked ~ .sheet-toggle-unchecked{
   display: none;
-}
-
-.charsheet .sheet-JTTH .sheet-field-toggle:not([value]) + *,
-.charsheet .sheet-JTTH .sheet-field-toggle[value=""] + *,
-.charsheet .sheet-JTTH .sheet-field-toggle[value="0"] + *,
-.charsheet .sheet-JTTH .sheet-field-toggle[value="hide"] + *{
-  display: none !important;
 }
 
 .charsheet .sheet-JTTH .sheet-field-untoggle[value="1"] + *{
