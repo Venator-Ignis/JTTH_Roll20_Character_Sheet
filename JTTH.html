@@ -1,5 +1,5 @@
 <div class="sheet-JTTH">
-    <div class="sheet-section-roll">
+    <div class="sheet-section-roll" style="display:none">
         <input type="hidden" name="attr_advantagetoggle" class="sheet-roll-toggle">
         <div class="sheet-section-roll-advantage">
             <label class="sheet-roll-radio">
@@ -230,6 +230,7 @@
                                         <option value="Oni of Spirit">Oni of Spirituality</option>
                                         <option value="Kitsune">Kitsune</option>
                                         <option value="Wani">Wani</option>
+                                        <option value="Kagutsuchi">Kagutsuchi</option>
                                     </select>
                                 </div>
                                 <div class="Winged-race">
@@ -761,7 +762,7 @@
                                     <div class="sheet-container-well well-trackers">
                                         <div class="sheet-container-box sheet-ac">
                                             <div class="sheet-container-header">
-                                                <button type="roll" name="roll_mortal_ac" value="@{wtype}&{template:simple} {{rname=Mortal AC}} {{mod=@{ac}}} {{r1=[[@{ac}]]}} @{character_name}">Armor Class</button>
+                                                <button type="roll" name="roll_mortal_ac" value="@{wtype}&{template:simple} {{rname=Mortal AC}} {{mod=@{ac}}} {{r1=[[@{ac}]]}} @{character_name}">Evasion</button>
                                             </div>
                                             <div class="sheet-container-body">
                                                 <input type="text" name="attr_ac" title="@{ac}" value="10">
@@ -811,16 +812,16 @@
                                         </div>
                                         <div class="sheet-container-box sheet-hp-coefficient">
                                             <div class="sheet-container-header">
-                                                <button type="roll" name="roll_hp-coef" value="@{wtype}&{template:simple} {{rname=HP Coefficient}} {{mod=@{hp_coefficient}D@{hit_dice}+[[@{hp_coefficient}*@{constitution_mod}[CON]]]}} {{r1=[[@{hp_coefficient}d@{hit_dice}+[[@{hp_coefficient}*@{constitution_mod}]][CON]]]}} {{normal=1}} @{character_name}">HP Coefficient</button>
+                                                <button type="roll" name="roll_hp-coef" value="@{wtype}&{template:simple} {{rname=HP Coefficient}} {{mod=@{hp_mortal_coefficient}D@{hit_dice}+[[@{hp_mortal_coefficient}*@{constitution_mod}[CON]]]}} {{r1=[[@{hp_mortal_coefficient}d@{hit_dice}+[[@{hp_mortal_coefficient}*@{constitution_mod}]][CON]]]}} {{normal=1}} @{character_name}">HP Coefficient</button>
                                             </div>
                                             <div class="sheet-container-body">
-                                                <input type="text" name="attr_hp_coefficient" title="@{hp_coefficient}" value="1">
+                                                <span name="attr_hp_mortal_coefficient" title="@{hp_mortal_coefficient}"></span>
                                             </div>
                                         </div>
                                         <div class="sheet-container-box sheet-hit-scale">
                                             <div class="sheet-container-header">Hit Scale</div>
                                             <div class="sheet-container-body">
-                                                <input type="text" name="attr_hit_scale" title="@{hit_scale}" value="1">
+                                                <span name="attr_mortal_hit_scale" title="@{mortal_hit_scale}"></span>
                                             </div>
                                             <div class="sheet-container-footer">
                                                 <span>Scale</span>
@@ -1225,7 +1226,7 @@
                                         <div class="sheet-container-body">
                                             <input type="text" name="attr_mortal_qi" title="@{mortal_qi}" value="0">
                                             <span>/</span>
-                                            <input type="text" name="attr_mortal_qi_max" title="@{mortal_qi_max}" value="0">
+                                            <span class="Mortal_Qi" name="attr_mortal_qi_max" title="@{mortal_qi_max}"></span>
                                         </div>
                                     </div>
                                     <div class="sheet-container-panel sheet-attacks">
@@ -2094,7 +2095,7 @@
                                     <div class="sheet-container-well well-trackers">
                                         <div class="sheet-container-box sheet-eac">
                                             <div class="sheet-container-header">
-                                                <button type="roll" name="roll_eac" value="@{wtype}&{template:simple} {{rname=EAC}} {{mod=@{eac}}} {{r1=[[@{eac}]]}} @{character_name}">Evasive AC</button>
+                                                <button type="roll" name="roll_eac" value="@{wtype}&{template:simple} {{rname=EAC}} {{mod=@{eac}}} {{r1=[[@{eac}]]}} @{character_name}">Evasion</button>
                                             </div>
                                             <div class="sheet-container-body">
                                                 <input type="text" name="attr_eac" title="@{eac}">
@@ -2102,7 +2103,7 @@
                                         </div>
                                         <div class="sheet-container-box sheet-passive-eac">
                                             <div class="sheet-container-header">
-                                                <button type="roll" name="roll_passive-eac" value="@{wtype}&{template:simple} {{rname=Passive EAC}} {{mod=@{passive-eac}}} {{r1=[[@{passive-eac}]]}} @{character_name}">Passive Evasive AC</button>
+                                                <button type="roll" name="roll_passive-eac" value="@{wtype}&{template:simple} {{rname=Passive EAC}} {{mod=@{passive-eac}}} {{r1=[[@{passive-eac}]]}} @{character_name}">Passive Evasion</button>
                                             </div>
                                             <div class="sheet-container-body">
                                                 <input type="text" name="attr_passive-eac" title="@{passive-eac}" value="(round(@{eac}/2))" disabled>
@@ -2110,7 +2111,7 @@
                                         </div>
                                         <div class="sheet-container-box sheet-dac">
                                             <div class="sheet-container-header">
-                                                <button type="roll" name="roll_dac" value="@{wtype}&{template:simple} {{rname=DAC}} {{mod=@{dac}}} {{r1=[[@{dac}]]}} @{character_name}">Defensive AC</button>
+                                                <button type="roll" name="roll_dac" value="@{wtype}&{template:simple} {{rname=DAC}} {{mod=@{dac}}} {{r1=[[@{dac}]]}} @{character_name}">Durability</button>
                                             </div>
                                             <div class="sheet-container-body">
                                                 <input type="text" name="attr_dac" title="@{dac}" value="10">
@@ -2170,16 +2171,19 @@
                                         </div>
                                         <div class="sheet-container-box sheet-hp-coefficient">
                                             <div class="sheet-container-header">
-                                                <button type="roll" name="roll_hp-coef" value="@{wtype}&{template:simple} {{rname=HP Coefficient}} {{mod=@{hp_coefficient}D@{hit_dice}+[[@{hp_coefficient}*@{constitution_mod}[CON]]]+[[@{hp_coefficient}*@{hit_bonus}]]}} {{r1=[[@{hp_coefficient}d@{hit_dice}+[[@{hp_coefficient}*@{constitution_mod}]][CON]]]}} {{normal=1}} @{character_name}">HP Coefficient</button>
+                                                <button type="roll" name="roll_hp-coef" value="@{wtype}&{template:simple} {{rname=HP Coefficient}} {{mod=@{hp_coefficient}D@{hit_dice}+[[@{hp_coefficient}*@{constitution_mod}[CON]]]+[[@{hp_coefficient}*@{hit_bonus}]]}} {{r1=[[@{hp_coefficient}d@{hit_dice}+[[@{hp_coefficient}*@{constitution_mod}]][CON]+[[@{hp_coefficient}*@{hit_bonus}]][BONUS]]]}} {{normal=1}} @{character_name}">HP Coefficient</button>
                                             </div>
                                             <div class="sheet-container-body">
-                                                <input type="text" name="attr_hp_coefficient" title="@{hp_coefficient}" value="1">
+                                                <span name="attr_hp_coefficient" title="@{hp_coefficient}"></span>
+                                            </div>
+                                            <div class="sheet-container-footer">
+                                                <span></span>
                                             </div>
                                         </div>
                                         <div class="sheet-container-box sheet-hit-scale">
                                             <div class="sheet-container-header">Hit Scale</div>
                                             <div class="sheet-container-body">
-                                                <input type="text" name="attr_hit_scale" title="@{hit_scale}" value="1">
+                                                <span name="attr_hit_scale" title="@{hit_scale}"></span>
                                             </div>
                                             <div class="sheet-container-footer">
                                                 <span>Scale</span>
@@ -2480,7 +2484,7 @@
                                         <div class="sheet-container-body">
                                             <input type="text" name="attr_qi" title="@{qi}">
                                             <span>/</span>
-                                            <input type="text" name="attr_qi_max" title="@{qi_max}" disabled="true" hidden>
+                                            <input type="text" name="attr_qi_max" title="@{qi_max}" hidden>
                                             <span name="attr_qi_max" title="@{qi_max}" style="width:200px"></span>
                                         </div>
                                     </div>
@@ -2866,6 +2870,14 @@
 									<div class="sheet-pc-detail">
 										<label>Weight</label>
 										<input type="text" name="attr_character_weight_detail" title="@{character_weight_detail}">
+									</div>
+									<div class="sheet-pc-detail">
+										<label>Eye Color</label>
+										<input type="text" name="attr_character_eye_detail" title="@{character_eye_detail}">
+									</div>
+									<div class="sheet-pc-detail">
+										<label>Hair Color</label>
+										<input type="text" name="attr_character_hair_detail" title="@{character_hair_detail}">
 									</div>
 									<div class="sheet-pc-detail sheet-pc-detail-habit">
 										<label>Habit</label>
@@ -3606,37 +3618,10 @@
                                                     </select>
                                                 </div>
                                                 <input type="hidden" name="attr_custom_ac_flag" class="sheet-field-toggle">
-                                                <div class="sheet-form-fieldset sheet-form-fieldset-hp-modifiers">
-                                                    <div class="sheet-form-fieldset-header">HP MODIFIERS</div>
-                                                    <div class="sheet-form-fieldset-body">
-                                                        <fieldset class="repeating_hpmod">
-                                                            <div class="sheet-fieldset-item">
-                                                                <div class="sheet-form-group">
-                                                                    <label>Level:</label>
-                                                                    <select name="attr_levels">
-                                                                        <option value="total" selected="selected">Total level</option>
-                                                                        <option value="base">Main class level</option>
-                                                                        <option value="multiclass1">Class 2 level</option>
-                                                                        <option value="multiclass2">Class 3 level</option>
-                                                                        <option value="multiclass3">Class 4 level</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="sheet-form-group">
-                                                                    <label>Source:</label>
-                                                                    <input type="text" name="attr_source">
-                                                                    <label>Mod:</label>
-                                                                    <input type="text" name="attr_mod">
-                                                                </div>
-                                                            </div>
-                                                        </fieldset>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="sheet-pc-option-right">
                                 <div class="sheet-container-panel sheet-pc-option-save">
                                     <div class="sheet-container-header">Saving Throw Options</div>
                                     <div class="sheet-container-body">
@@ -3682,6 +3667,8 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="sheet-pc-option-right">
                                 <div class="sheet-container-panel sheet-pc-option-skill">
                                     <div class="sheet-container-header">Skill Options</div>
                                     <div class="sheet-container-body">
@@ -3715,6 +3702,22 @@
                                                     <label>Athletics Modifier:</label>
                                                     <input type="text" name="attr_athletics_flat" placeholder="0" title="@{athletics_flat}">
                                                     <select name="attr_athletics_type" title="@{athletics_type}">
+                                                        <option value="1" selected="selected">Normal</option>
+                                                        <option value="2">Expertise</option>
+                                                    </select>
+                                                </div>
+                                                <div class="sheet-form-group">
+                                                    <label>Comprehension Modifier:</label>
+                                                    <input type="text" name="attr_comprehension_flat" placeholder="0" title="@{comprehension_flat}">
+                                                    <select name="attr_comprehension_type" title="@{comprehension_type}">
+                                                        <option value="1" selected="selected">Normal</option>
+                                                        <option value="2">Expertise</option>
+                                                    </select>
+                                                </div>
+                                                <div class="sheet-form-group">
+                                                    <label>Cultivate / Absorb Modifier:</label>
+                                                    <input type="text" name="attr_absorb_cult_flat" placeholder="0" title="@{absorb_cult_flat}">
+                                                    <select name="attr_absorb_cult_type" title="@{absorb_cult_type}">
                                                         <option value="1" selected="selected">Normal</option>
                                                         <option value="2">Expertise</option>
                                                     </select>
@@ -3800,6 +3803,14 @@
                                                     </select>
                                                 </div>
                                                 <div class="sheet-form-group">
+                                                    <label>Qi Control Modifier:</label>
+                                                    <input type="text" name="attr_qi_control_flat" placeholder="0" title="@{qi_control_flat}">
+                                                    <select name="attr_qi_control_type" title="@{qi_control_type}">
+                                                        <option value="1" selected="selected">Normal</option>
+                                                        <option value="2">Expertise</option>
+                                                    </select>
+                                                </div>
+                                                <div class="sheet-form-group">
                                                     <label>Religion Modifier:</label>
                                                     <input type="text" name="attr_religion_flat" placeholder="0" title="@{religion_flat}">
                                                     <select name="attr_religion_type" title="@{religion_type}">
@@ -3811,6 +3822,14 @@
                                                     <label>Sleight of Hand Modifier:</label>
                                                     <input type="text" name="attr_sleight_of_hand_flat" placeholder="0" title="@{sleight_of_hand_flat}">
                                                     <select name="attr_sleight_of_hand_type" title="@{sleight_of_hand_type}">
+                                                        <option value="1" selected="selected">Normal</option>
+                                                        <option value="2">Expertise</option>
+                                                    </select>
+                                                </div>
+                                                <div class="sheet-form-group">
+                                                    <label>Spiritual Sense Modifier:</label>
+                                                    <input type="text" name="attr_spirit_flat" placeholder="0" title="@{spirit_flat}">
+                                                    <select name="attr_spirit_type" title="@{spirit_type}">
                                                         <option value="1" selected="selected">Normal</option>
                                                         <option value="2">Expertise</option>
                                                     </select>
@@ -3861,7 +3880,9 @@
 		<input type="hidden" name="attr_ancestry" value="">
 		<input type="hidden" name="attr_race" value="">
 
+		<input type="hidden" name="attr_hp_mortal_coefficient" value="1">
 		<input type="hidden" name="attr_hp_coefficient" value="1">
+		<input type="hidden" name="attr_mortal_hit_scale" value="1">
 		<input type="hidden" name="attr_hit_scale" value="1">
 		<input type="hidden" name="attr_hit_dice" value="10">
 
@@ -3877,6 +3898,8 @@
 		<input type="hidden" name="attr_stress" value="0">
 		<input type="hidden" name="attr_pill_poison" value="0">
 		<input type="hidden" name="attr_pathway" value="0">
+		<input type="hidden" name="attr_qi" value="0">
+		<input type="hidden" name="attr_qi_max" value="0">
 
 		<input type="hidden" name="attr_strength_mod" value="0">
 		<input type="hidden" name="attr_dexterity_mod" value="0">
@@ -4896,6 +4919,21 @@
             }
             setAttrs(update);
         });
+
+        on("change:qi", function(eventinfo){
+            let qi = toInt(eventinfo.newValue);
+            getAttrs(["qi_deprivation"], function(v){
+                let deprivation = v.qi_deprivation;
+                console.log(deprivation)
+                let update = {};
+                if (qi <= deprivation){
+                    update["qi_deprivation_state"] = 1;
+                } else {
+                    update["qi_deprivation_state"] = 0;
+                }
+                setAttrs(update);
+            });
+        });
         
         // <!-- UPDATE FUNCTIONS -->
 
@@ -4947,16 +4985,13 @@
 
                                 if (b.simpleinventory === "complex") {
                                     _.each(idarray, function(currentID, i) {
-                                        if (b["repeating_inventory_" + currentID + "_equipped"] && b["repeating_inventory_" + currentID + "_equipped"] === "1" && b["repeating_inventory_" + currentID + "_itemmodifiers"] && b["repeating_inventory_" + currentID + "_itemmodifiers"].toLowerCase().indexOf("ac") > -1 || b["repeating_inventory_" + currentID + "_itemmodifiers"].toLowerCase().indexOf("eac") > -1 || b["repeating_inventory_" + currentID + "_itemmodifiers"].toLowerCase().indexOf("dac") > -1) {
+                                        if (b["repeating_inventory_" + currentID + "_equipped"] && b["repeating_inventory_" + currentID + "_equipped"] === "1" && b["repeating_inventory_" + currentID + "_itemmodifiers"] && b["repeating_inventory_" + currentID + "_itemmodifiers"].toLowerCase().indexOf("ac") > -1) {
                                             var mods = b["repeating_inventory_" + currentID + "_itemmodifiers"].split(",");
                                             var ac = 0;
-                                            var dac = cultivator_base;
-                                            var eac = cultivator_base;
                                             var type = "mod";
                                             _.each(mods, function(mod) {
                                                 if (mod.substring(0, 10) === "Item Type:") {
                                                     type = mod.substring(11, mod.length).trim().toLowerCase();
-                                                    console.log(mod.substring(11, mod.length).trim().toLowerCase());
                                                 }
                                                 if (mod.toLowerCase().indexOf("ac:") > -1 || mod.toLowerCase().indexOf("ac +") > -1 || mod.toLowerCase().indexOf("ac+") > -1) {
                                                     var regex = mod.replace(/[^0-9]/g, "");
@@ -4968,6 +5003,20 @@
                                                     var bonus = regex && regex.length > 0 && isNaN(parseInt(regex, 10)) === false ? parseInt(regex, 10) : 0;
                                                     ac = ac - bonus;
                                                 }
+                                            });
+                                            armoritems.push({
+                                                type: type,
+                                                ac: ac
+                                            });
+                                        }
+                                        if (b["repeating_inventory_" + currentID + "_equipped"] && b["repeating_inventory_" + currentID + "_equipped"] === "1" && b["repeating_inventory_" + currentID + "_itemmodifiers"] && b["repeating_inventory_" + currentID + "_itemmodifiers"].toLowerCase().indexOf("dac") > -1) {
+                                            var mods = b["repeating_inventory_" + currentID + "_itemmodifiers"].split(",");
+                                            var dac = cultivator_base;
+                                            var type = "mod";
+                                            _.each(mods, function(mod) {
+                                                if (mod.substring(0, 10) === "Item Type:") {
+                                                    type = mod.substring(11, mod.length).trim().toLowerCase();
+                                                }
                                                 if (mod.toLowerCase().indexOf("dac:") > -1 || mod.toLowerCase().indexOf("dac +") > -1 || mod.toLowerCase().indexOf("dac+") > -1) {
                                                     var regex = mod.replace(/[^0-9]/g, "");
                                                     var bonus = regex && regex.length > 0 && isNaN(parseInt(regex, 10)) === false ? parseInt(regex, 10) : 0;
@@ -4977,6 +5026,20 @@
                                                     var regex = mod.replace(/[^0-9]/g, "");
                                                     var bonus = regex && regex.length > 0 && isNaN(parseInt(regex, 10)) === false ? parseInt(regex, 10) : 0;
                                                     dac = dac - bonus;
+                                                }
+                                            });
+                                            armoritems.push({
+                                                type: type,
+                                                dac: dac
+                                            });
+                                        }
+                                        if (b["repeating_inventory_" + currentID + "_equipped"] && b["repeating_inventory_" + currentID + "_equipped"] === "1" && b["repeating_inventory_" + currentID + "_itemmodifiers"] && b["repeating_inventory_" + currentID + "_itemmodifiers"].toLowerCase().indexOf("eac") > -1) {
+                                            var mods = b["repeating_inventory_" + currentID + "_itemmodifiers"].split(",");
+                                            var eac = cultivator_base;
+                                            var type = "mod";
+                                            _.each(mods, function(mod) {
+                                                if (mod.substring(0, 10) === "Item Type:") {
+                                                    type = mod.substring(11, mod.length).trim().toLowerCase();
                                                 }
                                                 if (mod.toLowerCase().indexOf("eac:") > -1 || mod.toLowerCase().indexOf("eac +") > -1 || mod.toLowerCase().indexOf("eac+") > -1) {
                                                     var regex = mod.replace(/[^0-9]/g, "");
@@ -4991,8 +5054,6 @@
                                             });
                                             armoritems.push({
                                                 type: type,
-                                                ac: ac,
-                                                dac: dac,
                                                 eac: eac
                                             });
                                         }
@@ -5010,16 +5071,19 @@
         
                                     _.each(armoritems, function(item) {
                                         if (item["type"].indexOf("outer robe") > -1) {
-                                            armorac = 11;
+                                            armorac = item["ac"];
                                         } else if (item["type"].indexOf("enforcer robe") > -1) {
-                                            armorac = 12;
+                                            armorac = item["ac"];
                                         } else if (item["type"].indexOf("inner robe") > -1) {
-                                            armorac = 13;
+                                            armorac = item["ac"];
                                         } else if (item["type"].indexOf("core robe") > -1) {
-                                            armorac = 15;
+                                            armorac = item["ac"];
+                                        } else if (item["type"].indexOf("natural armor") > -1) {
+                                            armorac = item["ac"];
                                         } else if (item["type"].indexOf("shield") > -1) {
                                             shieldac = item["ac"];
                                         } else {
+                                            console.log("found the problem");
                                             modac = modac + item["ac"]
                                         }
                                     });
@@ -5030,18 +5094,17 @@
                                         base = dexmod;
                                     }
         
-                                    total = base + armorac + shieldac + modac;
+                                    total = base + shieldac + modac;
         
                                 };
                                 update["armorwarningflag"] = "hide";
                                 update["customacwarningflag"] = "hide";
 
-                                console.log("UPDATING AC")
-                                update["ac"] = total + globalacmod;
-                                console.log("UPDATING DAC")
-                                update["dac"] = cultivator_base + globalacmod;
-                                console.log("UPDATING EAC")
-                                update["eac"] = cultivator_base + total + globalacmod - 10;
+                                update["ac"] = total + globalacmod + armorac;
+
+                                update["eac"] = cultivator_base + total + globalacmod;
+
+                                update["dac"] = cultivator_base + globalacmod + armorac - 10;
 
                                 if (custom_total > 0) {
                                     if (armorcount > 0 || (shieldcount > 0 && b.custom_ac_shield != "yes")) {
@@ -5168,11 +5231,7 @@
             
                         update["global_damage_mod_roll"] = update["global_damage_mod_roll"].replace(/\+(?=$)/, '');
                         update["global_damage_mod_type"] = update["global_damage_mod_type"].replace(/\/(?=$)/, '');
-            
-                        // Remove any non-roll damage modifiers from the global damage modifier for the crit rolls
-                        // Will also remove any labels attached to these non-roll damage modifiers
                         update["global_damage_mod_crit"] = update["global_damage_mod_roll"].replace(/(?:[+\-*\/%]|\*\*|^)\s*\d+(?:\[.*?])?(?!d\d+)/gi, '')
-                            // If what was just replace removed the first damage modifier, remove any now precending plus signs
                             .replace(/(?:^\+)/i, '');
             
                         setAttrs(update, {
@@ -5637,7 +5696,7 @@
         // <!-- SET FUNCTIONS -->
         
         var set_level = function() {
-            getAttrs(["minor_realm", "major_realm", "level", "class", "subclass"], function(v) {
+            getAttrs(["minor_realm", "major_realm", "level", "class", "subclass", "hp_coefficient", "hp_mortal_coefficient", "hit_scale", "mortal_qi_max", "qi_max", "qi_deprivation"], function(v) {
                 var update = {};
                 var callbacks = [];
                 var finallevel = 1;
@@ -5645,24 +5704,31 @@
                 var minor = v.minor_realm;
                 var minor_add = 0;
                 var charclass = v.class;
-                var subclass = v.subclass 
+                var subclass = v.subclass;
+                var mortal_HP = v.hp_mortal_coefficient;
+                var cultivator_HP = v.hp_coefficient;
+                var cultivator_HP_add = 0;
+                var hit_scale = v.hit_scale;
+                var mortal_qi_max = v.mortal_qi_max;
+                var qi_max = v.qi_max;
+                var deprivation = v.qi_deprivation;
         
                 if (charclass == "Beast Tamer"){
-                    subclass = " ";
+                    subclass = "";
                 } else if (charclass == "Bow"){
-                    subclass = " ";
+                    subclass = "";
                 } else if (charclass == "Corpse"){
-                    subclass = " ";
+                    subclass = "";
                 } else if (charclass == "Poison"){
-                    subclass = " ";
+                    subclass = "";
                 } else if (charclass == "Psychic"){
-                    subclass = " ";
+                    subclass = "";
                 } else if (charclass == "Puppet"){
-                    subclass = " ";
+                    subclass = "";
                 } else if (charclass == "Sabre"){
-                    subclass = " ";
+                    subclass = "";
                 } else if (charclass == "Spear"){
-                    subclass = " ";
+                    subclass = "";
                 };
         
                 var class_display = subclass + " " + charclass;
@@ -5679,20 +5745,176 @@
         
                 if (major == "Qi-Gathering"){
                     finallevel = 1 + minor_add;
+                    hit_scale = 1;
                 } else if (major == "Foundation"){
                     finallevel = 5 + minor_add;
+                    hit_scale = 2;
                 } else if (major == "Core Formation"){
                     finallevel = 9 + minor_add;
+                    hit_scale = 6;
                 } else if (major == "Martial Soul"){
                     finallevel = 13 + minor_add;
+                    hit_scale = 30;
                 } else if (major == "God Ascendance"){
                     finallevel = 17 + minor_add;
+                    hit_scale = 150;
                 } else{
                     finallevel = 0;
+                    hit_scale = 0;
                 };
                 
                 var level_display = minor + " " + major + " (" + finallevel + ")";
-        
+
+                mortal_HP = finallevel;
+
+                if (major == "Qi-Gathering"){
+                    cultivator_HP = 1;
+                    if (minor == "Early"){
+                        cultivator_HP = 1;
+                    } else if (minor == "Middle"){
+                        cultivator_HP = 2;
+                    } else if (minor == "Late"){
+                        cultivator_HP = 3;
+                    } else{
+                        cultivator_HP = 4;
+                    };
+                } else if (major == "Foundation"){
+                    cultivator_HP = 7;
+                    if (minor == "Early"){
+                        cultivator_HP = 7;
+                    } else if (minor == "Middle"){
+                        cultivator_HP = 9;
+                    } else if (minor == "Late"){
+                        cultivator_HP = 11;
+                    } else{
+                        cultivator_HP = 13;
+                    };
+                } else if (major == "Core Formation"){
+                    cultivator_HP = 22;
+                    if (minor == "Early"){
+                        cultivator_HP = 22;
+                    } else if (minor == "Middle"){
+                        cultivator_HP = 28;
+                    } else if (minor == "Late"){
+                        cultivator_HP = 34;
+                    } else{
+                        cultivator_HP = 40;
+                    };
+                } else if (major == "Martial Soul"){
+                    cultivator_HP = 85;
+                    if (minor == "Early"){
+                        cultivator_HP = 85;
+                    } else if (minor == "Middle"){
+                        cultivator_HP = 115;
+                    } else if (minor == "Late"){
+                        cultivator_HP = 145;
+                    } else{
+                        cultivator_HP = 175;
+                    };
+                } else if (major == "God Ascendance"){
+                    cultivator_HP = 400;
+                    if (minor == "Early"){
+                        cultivator_HP = 400;
+                    } else if (minor == "Middle"){
+                        cultivator_HP = 550;
+                    } else if (minor == "Late"){
+                        cultivator_HP = 700;
+                    } else{
+                        cultivator_HP = 850;
+                    };
+                } else{
+                    cultivator_HP = 0;
+                };
+
+                if (finallevel == 9){
+                    mortal_qi_max = 1;
+                } else if (finallevel == 10){
+                    mortal_qi_max = 1;
+                }
+
+                switch (finallevel){
+                    case 1:
+                        qi_max = 10;
+                        break;
+                    case 2:
+                        qi_max = 20;
+                        break;
+                    case 3:
+                        qi_max = 30;
+                        break;
+                    case 4:
+                        qi_max = 40;
+                        break;
+                    case 5:
+                        qi_max = 150;
+                        break;
+                    case 6:
+                        qi_max = 200;
+                        break;
+                    case 7:
+                        qi_max = 300;
+                        break;
+                    case 8:
+                        qi_max = 425;
+                        break;
+                    case 9: 
+                        mortal_qi_max = 1;
+                        qi_max = 2000;
+                        break;
+                    case 10:
+                        mortal_qi_max = 3;
+                        qi_max = 3500;
+                        break;
+                    case 11:
+                        mortal_qi_max = 5;
+                        qi_max = 6500;
+                        break;
+                    case 12:
+                        mortal_qi_max = 7;
+                        qi_max = 10000;
+                        break;
+                    case 13:
+                        mortal_qi_max = 10;
+                        qi_max = 10001;
+                        break;
+                    case 14:
+                        mortal_qi_max = 20;
+                        qi_max = 10002;
+                        break;
+                    case 15:
+                        mortal_qi_max = 35;
+                        qi_max = 10003;
+                        break;
+                    case 16:
+                        mortal_qi_max = 70;
+                        qi_max = 10004;
+                        break;
+                    case 17:
+                        mortal_qi_max = 120;
+                        qi_max = 10005;
+                        break;
+                    case 18:
+                        mortal_qi_max = 180;
+                        qi_max = 10006;
+                        break;
+                    case 19:
+                        mortal_qi_max = 250;
+                        qi_max = 10007;
+                        break;
+                    case 20:
+                        mortal_qi_max = 500;
+                        qi_max = 10008;
+                        break;
+                }
+
+                deprivation = Math.ceil(qi_max * 0.05);
+
+                update["qi_deprivation"] = deprivation;
+                update["qi_max"] = qi_max;
+                update["mortal_qi_max"] = mortal_qi_max;
+                update["hit_scale"] = hit_scale;
+                update["hp_mortal_coefficient"] = mortal_HP;
+                update["hp_coefficient"] = cultivator_HP;
                 update["level"] = finallevel;
                 update["level_display"] = level_display;
                 update["class_display"] = class_display;
